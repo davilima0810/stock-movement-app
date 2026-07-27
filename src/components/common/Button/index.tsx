@@ -1,0 +1,15 @@
+import React from 'react';
+import { Button as MuiButton, CircularProgress } from '@mui/material';
+import type { ButtonProps as MuiButtonProps } from '@mui/material';
+
+export interface ButtonProps extends MuiButtonProps {
+  loading?: boolean;
+}
+
+export const Button: React.FC<ButtonProps> = ({ children, loading, disabled, ...props }) => {
+  return (
+    <MuiButton disabled={disabled || loading} {...props}>
+      {loading ? <CircularProgress size={24} color="inherit" /> : children}
+    </MuiButton>
+  );
+};
